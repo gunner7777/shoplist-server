@@ -33,7 +33,7 @@ export async function addProduct(req, res) {
 export async function deleteProduct(req, res) {
   try {
     let deleteProduct = await Products.findOneAndDelete({_id: req.params.id});
-    res.status(200).json({ result: `Delete product with id ${req.params.id}` });
+    res.status(200).json({ id: deleteProduct._id });
   } catch (err) {
     return res.status(500).json(err);
   }
