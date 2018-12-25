@@ -14,7 +14,7 @@ export async function getProduct(req, res) {
     let product = await Products.findOne({_id: req.params.id});
     res.status(201).json(product);
   } catch (err) {
-
+    return res.status(500).json(err);
   }
 }
 
@@ -44,7 +44,6 @@ export async function editProduct(req, res) {
     let editedInfo = {
       name: req.body.name,
     };
-
     let result = await Products.findByIdAndUpdate(req.params.id, editedInfo, { new: true });
     res.status(201).json(result);
   } catch (err) {
